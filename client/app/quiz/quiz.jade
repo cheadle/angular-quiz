@@ -1,0 +1,38 @@
+div(ng-include='"components/navbar/navbar.html"')
+
+header#banner.hero-unit(ng-show="!quiz.complete")
+  .container
+    .col-md-6.col-md-offset-3
+      h2 Question {{quiz.index + 1}}
+      p.lead {{quiz.question.text}}
+      pre(ng-show="quiz.question.code")
+        .span(ng-repeat="line in quiz.question.code track by $index")
+          | {{line}}
+      .btn-group-vertical
+        label.btn.btn-default(ng-model="quiz.answer" btn-radio="{{$index}}" ng-repeat='option in quiz.question.options track by $index') {{option}}
+      .continue.clear
+        button.btn.btn-lg.btn-primary(ng-click="setAnswer()" ng-disabled="quiz.answer == null") Continue >
+
+.container(ng-show="quiz.complete")
+  .col-md-6.col-md-offset-3
+    h1 Quiz Results
+    p.lead.blue You got {{quiz.total}} out of {{questions.length}} Correct
+    .result(ng-repeat="question in questions track by $index")
+      h3 Question {{$index + 1}}
+      p.lead {{question.text}}
+      .panel(ng-show="question.correct")
+        h3.correct Correct!
+        p.lead {{question.options[question.answer]}}
+      .panel(ng-show="!question.correct")
+        h3.incorrect You answered incorrect.
+        p.lead {{question.wrongAnswer}}
+        h3 Correct answer:
+        p.lead {{question.options[question.answer]}}
+
+
+footer.footer
+  .container
+    p
+      | Desk Quiz
+      = ' | '
+      a(href='https://github.com/chedazzle') chedazzle@github

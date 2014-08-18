@@ -1,0 +1,17 @@
+div(ng-include='"components/navbar/navbar.html"')
+
+header#banner.hero-unit
+  .container
+    h1 It's Quiz Time!
+    p.lead
+      a(href='/quiz') Login
+      | #{space} or #{space}
+      a(href='/signup') sign up
+      | #{space} to begin. #{space}
+
+footer.footer
+  .container
+    p
+      | Desk Quiz Demo
+      = ' | '
+      a(href='https://github.com/chedazzle') chedazzle@github

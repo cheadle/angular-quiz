@@ -15,8 +15,7 @@ header#banner.hero-unit(ng-show="!quiz.complete")
 
 .container(ng-show="quiz.complete")
   .col-md-6.col-md-offset-3
-    h1 Quiz Results
-    p.lead.blue You got {{quiz.total}} out of {{questions.length}} Correct
+    h1.blue You got {{quiz.total}} out of {{questions.length}} correct!
     .result(ng-repeat="question in questions track by $index")
       h3 Question {{$index + 1}}
       p.lead {{question.text}}
@@ -24,7 +23,7 @@ header#banner.hero-unit(ng-show="!quiz.complete")
         h3.correct Correct!
         p.lead {{question.options[question.answer]}}
       .panel(ng-show="!question.correct")
-        h3.incorrect You answered incorrect.
+        h3.incorrect Your answer was incorrect.
         p.lead {{question.wrongAnswer}}
         h3 Correct answer:
         p.lead {{question.options[question.answer]}}

@@ -5,7 +5,7 @@ angular.module 'quizApp'
 
   $scope.questions = quiz.questions()
 
-  $scope.quiz = q =
+  $scope.quiz = quiz =
     index: 0
     question: $scope.questions[0]
     answer: null
@@ -13,17 +13,17 @@ angular.module 'quizApp'
     total: 0
 
   $scope.setAnswer = ->
-    if q.answer == q.question.answer
-      q.question.correct = true
-      q.total++
+    if quiz.answer == quiz.question.answer
+      quiz.question.correct = true
+      quiz.total++
     else
-      q.question.correct = false
-      q.question.wrongAnswer = q.question.options[q.answer]
+      quiz.question.correct = false
+      quiz.question.wrongAnswer = quiz.question.options[quiz.answer]
 
-    q.answer = null
+    quiz.answer = null
 
-    if q.index >= $scope.questions.length - 1
-      q.complete = true
+    if quiz.index >= $scope.questions.length - 1
+      quiz.complete = true
     else
-      q.question = $scope.questions[q.index + 1]
-      q.index++
+      quiz.question = $scope.questions[quiz.index + 1]
+      quiz.index++
